@@ -1,0 +1,10 @@
+pandas
+numpy 
+keras
+matplotlib
+Pillow
+opencv-python 
+seaborn
+scikit-image
+tensorflow
+mlflow
