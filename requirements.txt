@@ -1,10 +1,5 @@
 pandas
-numpy 
-keras
-matplotlib
-Pillow
-opencv-python 
-seaborn
-scikit-image
 tensorflow
-mlflow
+numpy
+matplotlib
+scikit-learn
