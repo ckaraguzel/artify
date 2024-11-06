@@ -1,12 +1,19 @@
 # Define constants and parameters for the project
+import torch
+class Config:
+    # Dataset and paths
+    DATA_DIR = '/Users/cisilkaraguzel/Documents/GitHub/artify/data/processed_data'
+    BATCH_SIZE = 32
+    LEARNING_RATE = 1e-4
+    WEIGHT_DECAY = 1e-5
+    NUM_EPOCHS = 25
+    MODEL_SAVE_PATH = 'saved_models/resnet_model.pth'
+    DEVICE = 'cuda' if torch.cuda.is_available() else 'cpu'
+    NUM_CLASSES = 7
+    # Train/Validation/Test split ratios
+    TRAIN_RATIO = 0.3
+    VAL_RATIO = 0.1
+    TEST_RATIO = 0.6  # Remaining portion for test data
 
-DATA_DIR = "/Users/cisilkaraguzel/Documents/GitHub/artify/data/raw_data" 
-IMG_HEIGHT = 224
-IMG_WIDTH = 224
-BATCH_SIZE = 32
-EPOCHS = 10
-TRAIN_SPLIT = 0.3
-VAL_SPLIT = 0.1
-TEST_SPLIT = 0.6
-MODEL_SAVE_PATH = "models/painter_classification_model.pth"
-LEARNING_RATE = 0.001
+    # Class weights (will be calculated based on dataset)
+    CLASS_WEIGHTS = None

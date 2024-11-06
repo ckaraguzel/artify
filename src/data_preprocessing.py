@@ -5,7 +5,6 @@ This file includes
 -resizing our paintings
 '''
 
-
 import os
 from torchvision import datasets, transforms
 from torch.utils.data import random_split, DataLoader
