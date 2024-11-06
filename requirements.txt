@@ -1,5 +1,6 @@
 pandas
-tensorflow
+torch
+torchvision
 numpy
 matplotlib
 scikit-learn

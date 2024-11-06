@@ -1,35 +1,29 @@
-import tensorflow as tf
-from sklearn.model_selection import train_test_split
-from config import DATA_DIR, IMG_HEIGHT, IMG_WIDTH, BATCH_SIZE, TRAIN_SPLIT, VAL_SPLIT
 import os
-from collections import Counter
+from torchvision import datasets, transforms
+from torch.utils.data import random_split, DataLoader
+from config import DATA_DIR, IMG_HEIGHT, IMG_WIDTH, BATCH_SIZE, TRAIN_SPLIT, VAL_SPLIT
+
+# Define transformations
+transform = transforms.Compose([
+    transforms.Resize((IMG_HEIGHT, IMG_WIDTH)),
+    transforms.ToTensor()
+])
 
 def load_data():
-    dataset = tf.keras.preprocessing.image_dataset_from_directory(
-        DATA_DIR,
-        image_size=(IMG_HEIGHT, IMG_WIDTH),
-        batch_size=BATCH_SIZE,
-        shuffle=True,
-        seed=123
-    )
+    # Load the dataset
+    dataset = datasets.ImageFolder(DATA_DIR, transform=transform)
 
-    # Split dataset into train, validation, and test sets
-    train_size = int(len(dataset) * TRAIN_SPLIT)
-    val_size = int(len(dataset) * VAL_SPLIT)
+    # Calculate split sizes
+    train_size = int(TRAIN_SPLIT * len(dataset))
+    val_size = int(VAL_SPLIT * len(dataset))
     test_size = len(dataset) - train_size - val_size
 
-    train_ds = dataset.take(train_size)
-    test_val_ds = dataset.skip(train_size)
-    val_ds = test_val_ds.take(val_size)
-    test_ds = test_val_ds.skip(val_size)
+    # Split the dataset
+    train_ds, val_ds, test_ds = random_split(dataset, [train_size, val_size, test_size])
 
-    return train_ds, val_ds, test_ds
+    # Create DataLoaders
+    train_loader = DataLoader(train_ds, batch_size=BATCH_SIZE, shuffle=True)
+    val_loader = DataLoader(val_ds, batch_size=BATCH_SIZE, shuffle=False)
+    test_loader = DataLoader(test_ds, batch_size=BATCH_SIZE, shuffle=False)
 
-def count_paintings():
-    painter_counts = Counter()
-    for painter_folder in os.listdir(DATA_DIR):
-        painter_path = os.path.join(DATA_DIR, painter_folder)
-        if os.path.isdir(painter_path):
-            painting_count = len(os.listdir(painter_path))
-            painter_counts[painter_folder] = painting_count
-    return painter_counts
+    return train_loader, val_loader, test_loader, len(dataset.classes), dataset.classes
