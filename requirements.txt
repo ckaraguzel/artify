@@ -4,3 +4,4 @@ torchvision
 numpy
 matplotlib
 scikit-learn
+pillow
