@@ -8,7 +8,8 @@ This file includes
 import os
 from torchvision import datasets, transforms
 from torch.utils.data import random_split, DataLoader
-from config import DATA_DIR, IMG_HEIGHT, IMG_WIDTH, BATCH_SIZE, TRAIN_SPLIT, VAL_SPLIT
+from config import Config
+#from config import DATA_DIR, IMG_HEIGHT, IMG_WIDTH, BATCH_SIZE, TRAIN_SPLIT, VAL_SPLIT
 from PIL import Image
 import matplotlib.pyplot as plt
 
@@ -38,11 +39,11 @@ def remove_non_rgb_images(data_dir):
                     os.remove(image_path)
 
 # Run the function
-remove_non_rgb_images(DATA_DIR)
+remove_non_rgb_images(Config.DATA_DIR)
 
 file_counts = {}
-for painter_folder in os.listdir(DATA_DIR):
-    painter_path = os.path.join(DATA_DIR, painter_folder)
+for painter_folder in os.listdir(Config.DATA_DIR):
+    painter_path = os.path.join(Config.DATA_DIR, painter_folder)
     if os.path.isdir(painter_path):
         num_files = len([f for f in os.listdir(painter_path) if os.path.isfile(os.path.join(painter_path, f))])
         file_counts[painter_folder] = num_files
@@ -62,13 +63,13 @@ plt.tight_layout()
 plt.show()
 
 transform = transforms.Compose([
-    transforms.Resize((IMG_HEIGHT, IMG_WIDTH)),
+    transforms.Resize((Config.IMG_HEIGHT, Config.IMG_WIDTH)),
     transforms.ToTensor()
 ])
 
 # Define input and output directories
-input_folder = '/Users/cisilkaraguzel/Documents/GitHub/artify/data/raw_data'  # Folder containing original images
-output_folder = '/Users/cisilkaraguzel/Documents/GitHub/artify/data/processed_data'  # Folder to save processed images
+input_folder = 'C://Users//Hatice//Documents//GitHub//artify//data//raw_data'  # Folder containing original images
+output_folder = 'C://Users//Hatice//Documents//GitHub//artify//data//processed_data'  # Folder to save processed images
 
 # Create output folder if it doesn't exist
 os.makedirs(output_folder, exist_ok=True)
