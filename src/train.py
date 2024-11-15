@@ -6,6 +6,8 @@ from config import Config
 from data_loader import PaintingDataLoader
 from model import get_model
 from tqdm import tqdm
+import os
+import csv
 
 def calculate_class_weights(data_loader):
     label_counts = torch.zeros(Config.NUM_CLASSES)
@@ -14,6 +16,14 @@ def calculate_class_weights(data_loader):
             label_counts[label] += 1
     weights = 1.0 / label_counts
     return weights
+def save_results_to_csv(file_path, data):
+    # Check if the file exists; if not, create it and add headers
+    file_exists = os.path.isfile(file_path)
+    with open(file_path, mode='a', newline='') as file:
+        writer = csv.writer(file)
+        if not file_exists:
+            writer.writerow(["Phase", "Epoch", "Train Loss", "Train Accuracy", "Val Loss", "Val Accuracy", "Model Name"])
+        writer.writerow(data)
 
 def train(config):
     # Initialize the PaintingDataLoader and get dataloaders
@@ -60,6 +70,11 @@ def train(config):
 
         val_accuracy = 100 * val_correct / val_total
         print(f"Epoch [{epoch+1}/{config.NUM_EPOCHS}], Val Loss: {val_loss/len(val_loader):.4f}, Val Accuracy: {val_accuracy:.2f}%")
+        # Save the results for this epoch to CSV
+        save_results_to_csv(
+            "C://Users//Hatice//Desktop//artify 2//results//results.csv",
+            ["Training", epoch+1, epoch_loss/len(train_loader), train_accuracy, val_loss/len(val_loader), val_accuracy, config.MODEL_NAME]
+        )
 
     # Save the model
     torch.save(model.state_dict(), config.MODEL_SAVE_PATH)
