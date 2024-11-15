@@ -10,6 +10,7 @@ class Config:
     WEIGHT_DECAY = 1e-5
     NUM_EPOCHS = 25
     MODEL_SAVE_PATH = 'saved_models//resnet_model.pth'
+    MODEL_NAME= "resnet_model"
     DEVICE = 'cuda' if torch.cuda.is_available() else 'cpu'
     NUM_CLASSES = 7
     # Train/Validation/Test split ratios
