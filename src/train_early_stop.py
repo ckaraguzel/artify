@@ -1,4 +1,3 @@
-# train.py
 import torch
 import torch.nn as nn
 import torch.optim as optim
@@ -36,6 +35,11 @@ def train(config):
     criterion = nn.CrossEntropyLoss(weight=class_weights)
     optimizer = optim.Adam(model.parameters(), lr=config.LEARNING_RATE, weight_decay=config.WEIGHT_DECAY)
     
+    # Early stopping parameters
+    patience = config.PATIENCE  # Number of epochs to wait for improvement
+    best_val_loss = float('inf')
+    epochs_no_improve = 0
+    
     for epoch in range(config.NUM_EPOCHS):
         model.train()
         epoch_loss, correct, total = 0, 0, 0
@@ -69,17 +73,29 @@ def train(config):
                 val_correct += (predicted == labels).sum().item()
 
         val_accuracy = 100 * val_correct / val_total
-        print(f"Epoch [{epoch+1}/{config.NUM_EPOCHS}], Val Loss: {val_loss/len(val_loader):.4f}, Val Accuracy: {val_accuracy:.2f}%")
-        # Save the results for this epoch to CSV
+        avg_val_loss = val_loss / len(val_loader)
+        print(f"Epoch [{epoch+1}/{config.NUM_EPOCHS}], Val Loss: {avg_val_loss:.4f}, Val Accuracy: {val_accuracy:.2f}%")
         save_results_to_csv(
-            "C://Users//Hatice//Documents//GitHub//artify//csv_files//results.csv",
+            "C://Users//Hatice//Desktop//artify 2//results//results.csv",
             ["Training", epoch+1, epoch_loss/len(train_loader), train_accuracy, val_loss/len(val_loader), val_accuracy, config.MODEL_NAME]
         )
 
-    # Save the model
-    torch.save(model.state_dict(), config.MODEL_SAVE_PATH)
-    print(f"Model saved to {config.MODEL_SAVE_PATH}")
+        # Early stopping check
+        if avg_val_loss < best_val_loss:
+            best_val_loss = avg_val_loss
+            epochs_no_improve = 0
+            # Save the best model
+            torch.save(model.state_dict(), config.MODEL_SAVE_PATH)
+            print(f"Validation loss improved. Model saved to {config.MODEL_SAVE_PATH}")
+        else:
+            epochs_no_improve += 1
+            print(f"No improvement for {epochs_no_improve} epoch(s).")
+
+        if epochs_no_improve >= patience:
+            print("Early stopping triggered. Training stopped.")
+            break
 
 if __name__ == '__main__':
     config = Config()
+    config.PATIENCE = 5  # Number of epochs to wait for improvement before stopping
     train(config)
