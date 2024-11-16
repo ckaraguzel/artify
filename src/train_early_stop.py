@@ -76,7 +76,7 @@ def train(config):
         avg_val_loss = val_loss / len(val_loader)
         print(f"Epoch [{epoch+1}/{config.NUM_EPOCHS}], Val Loss: {avg_val_loss:.4f}, Val Accuracy: {val_accuracy:.2f}%")
         save_results_to_csv(
-            "C://Users//Hatice//Desktop//artify 2//results//results.csv",
+            "C://Users//Hatice//Documents//GitHub//artify//csv_files//results.csv",
             ["Training", epoch+1, epoch_loss/len(train_loader), train_accuracy, val_loss/len(val_loader), val_accuracy, config.MODEL_NAME]
         )
 

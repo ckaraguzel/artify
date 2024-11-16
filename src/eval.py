@@ -64,7 +64,7 @@ def evaluate_model(model, data_loader, class_names):
 # Load the model
 config = Config()
 model = get_model(config)  # Ensure the architecture matches the saved model
-checkpoint_path = r"C://Users//Hatice//Documents//GitHub//artify//saved_models//resnet_model.pth"
+checkpoint_path = config.MODEL_SAVE_PATH
 
 # Load the saved state_dict
 model.load_state_dict(torch.load(checkpoint_path, map_location=config.DEVICE))
