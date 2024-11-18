@@ -2,7 +2,7 @@ import torch
 import torch.nn as nn
 import torch.optim as optim
 from config import Config
-from data_loader import PaintingDataLoader
+from data_loader2 import PaintingDataLoader
 from model import get_model
 from tqdm import tqdm
 import os
