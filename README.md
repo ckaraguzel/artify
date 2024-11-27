@@ -1,4 +1,4 @@
-Artify: Painter Classification using Machine Learning
+# Artify: Painter Classification using Machine Learning
 
 Artify is a machine learning project designed to predict the painter of a given painting. By analyzing the unique artistic styles of renowned painters, the model identifies the creator without considering the genre of the painting.
 
