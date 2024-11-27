@@ -40,9 +40,13 @@ Evaluation Metrics: Includes accuracy, precision, recall, and F1-score
 The model achieves the following performance metrics on the test set:
 
 Accuracy: XX%
+
 Precision: XX%
+
 Recall: XX%
+
 F1-Score: XX%
+
 Prediction examples and performance visualizations can be found in the results/ folder.
 
 
