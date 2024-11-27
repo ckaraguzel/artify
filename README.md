@@ -14,7 +14,7 @@ Standardizing image dimensions through resizing
 Normalizing pixel values for consistent model input
 Splitting the dataset into training, validation, and test subsets
 
-#Painters
+# Painters
 The model predicts the painter from the following list of renowned artists:
 
 Claude Monet
@@ -32,7 +32,7 @@ René Magritte
 The painter classification model leverages a deep learning framework to identify unique features of each painter's style.
 
 
-3Key features:
+## 3Key features:
 
 Pretrained Backbone: ResNet
 Transfer Learning: Fine-tuned for painter-specific classification
