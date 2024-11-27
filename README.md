@@ -11,7 +11,9 @@ The dataset comprises a collection of paintings by notable artists across differ
 # Preprocessing Steps:
 
 Standardizing image dimensions through resizing
+
 Normalizing pixel values for consistent model input
+
 Splitting the dataset into training, validation, and test subsets
 
 # Painters
