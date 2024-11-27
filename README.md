@@ -40,7 +40,9 @@ The painter classification model leverages a deep learning framework to identify
 ## 3Key features:
 
 Pretrained Backbone: ResNet
+
 Transfer Learning: Fine-tuned for painter-specific classification
+
 Evaluation Metrics: Includes accuracy, precision, recall, and F1-score
 
 # Results
