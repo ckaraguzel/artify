@@ -18,13 +18,20 @@ Splitting the dataset into training, validation, and test subsets
 The model predicts the painter from the following list of renowned artists:
 
 Claude Monet
+
 Pierre-Auguste Renoir
+
 Vincent van Gogh
+
 Paul Cézanne
+
 Pablo Picasso
+
 Georges Braque
+
 Salvador Dalí
-René Magritte
+
+
 
 # Model Architecture
 The painter classification model leverages a deep learning framework to identify unique features of each painter's style.
