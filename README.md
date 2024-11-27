@@ -28,7 +28,7 @@ Surrealism
 Salvador Dalí
 René Magritte
 
-#Model Architecture
+# Model Architecture
 The painter classification model leverages a deep learning framework to identify unique features of each painter's style.
 
 
