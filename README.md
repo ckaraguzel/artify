@@ -17,15 +17,15 @@ The dataset comprises a collection of paintings by notable artists across differ
 
 # Preprocessing Steps:
 
-Standardizing image dimensions through resizing
+- Standardizing image dimensions through resizing
 
-Normalizing pixel values for consistent model input
+- Normalizing pixel values for consistent model input
 
-Splitting the dataset into training, validation, and test subsets
+- Splitting the dataset into training, validation, and test subsets
 
-On the training set: Normalization, augmentation (e.g., random crops, flips, and rotations), resize
+- On the training set: Normalization, augmentation (e.g., random crops, flips, and rotations), resize
 
-On the test and validation sets: Normalization and resize
+- On the test and validation sets: Normalization and resize
 
 # Painters
 The model predicts the painter from the following list of renowned artists:
