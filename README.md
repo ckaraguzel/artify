@@ -7,7 +7,10 @@ This project trains a CNN to dive deep into the textures, colors, and brushwork 
 Ready to let AI channel its inner art historian? Let’s create something extraordinary! 🚀
 
 # Overview
-The goal of Artify is to classify paintings based on their painters, using machine learning techniques to capture the nuances of artistic style. The project focuses exclusively on identifying the painter and does not involve genre classification.
+
+We fine-tuned several pre-trained Convolutional Neural Network (CNN) models (resnet18, densenet121) to classify paintings based on their painters. This project does not involve genre classification and exclusively focuses on the identification of the painter.
+
+We created an application [Artify_App](https://huggingface.co/spaces/hmutlu/Artify) based on our best performing model. 
 
 # Dataset
 The dataset comprises a collection of paintings by notable artists across different art movements. Each image is labeled with the painter's name, forming the basis for the supervised learning model. We downloaded the data from: https://www.kaggle.com/datasets/antoinegruson/-wikiart-all-images-120k-link
