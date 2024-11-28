@@ -29,7 +29,7 @@ The dataset comprises a collection of paintings by notable artists across differ
 # Dependencies
 
 ```text
-Your text here
+torch, torchvision, streamlit, pillow, tqdm, scikit-learn, pandas, numpy, matplotlib 
 ```
 
 
