@@ -1,6 +1,10 @@
-# 🎨 Artify: Painting a Masterpiece with CNNs 🖌️
+# 🎨 Artify: Finding the painter of a Masterpiece with CNNs 🖌️
 
-Artify is a machine learning project designed to predict the painter of a given painting. By analyzing the unique artistic styles of renowned painters, the model identifies the creator without considering the genre of the painting.
+Welcome to Artify, where Convolutional Neural Networks (CNNs) bring the genius of art to life! 🧑‍🎨✨ Can AI tell the difference between Picasso's bold geometry and and Dalí's surreal dreamscapes? Spoiler alert: it absolutely can!
+
+This project trains a CNN to dive deep into the textures, colors, and brushwork of famous paintings, unraveling the secrets of each artist’s unique style. Forget genres—this is pure artistic detective work powered by cutting-edge machine learning.
+
+Ready to let AI channel its inner art historian? Let’s create something extraordinary! 🚀
 
 # Overview
 The goal of Artify is to classify paintings based on their painters, using machine learning techniques to capture the nuances of artistic style. The project focuses exclusively on identifying the painter and does not involve genre classification.
