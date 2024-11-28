@@ -8,7 +8,7 @@ Ready to let AI channel its inner art historian? Let’s create something extrao
 
 # Overview
 
-We fine-tuned several pre-trained Convolutional Neural Network (CNN) models (resnet18, densenet121) to classify paintings based on their painters. This project does not involve genre classification and exclusively focuses on the identification of the painter.
+We fine-tuned several pre-trained Convolutional Neural Network (CNN) models (resnet18, densenet121) to classify paintings based on their painters. This project does not involve genre classification and exclusively focuses on the identification of the painter. 
 
 We created an application [Artify_App](https://huggingface.co/spaces/hmutlu/Artify) based on our best performing model. 
 
