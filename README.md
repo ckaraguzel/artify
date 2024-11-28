@@ -8,9 +8,10 @@ Ready to let AI channel its inner art historian? Let’s create something extrao
 
 # Overview
 
-We fine-tuned several pre-trained Convolutional Neural Network (CNN) models (resnet18, densenet121) to classify paintings based on their painters. This project does not involve genre classification and exclusively focuses on the identification of the painter. We used a dataset of paintings of 7 painters (Claude Monet, Georges Braque, Pablo Picasso, Paul Cezanne, Pierre August Renoir, Salvador Dali, Vincent Van Gogh) and hence our model can only provide more accurate results for the paintings of these particular painters. We created an application [Artify_App](https://huggingface.co/spaces/hmutlu/Artify) based on our best performing model. 
+We fine-tuned several pre-trained Convolutional Neural Network (CNN) models (resnet18, densenet121) to classify paintings based on their painters. This project does not involve genre classification and exclusively focuses on the identification of the painter. We used a dataset of paintings of 7 painters (Claude Monet, Georges Braque, Pablo Picasso, Paul Cezanne, Pierre-August Renoir, Salvador Dalí, Vincent Van Gogh) and hence our model can only provide more accurate results for the paintings of these particular painters. We created an application [Artify_App](https://huggingface.co/spaces/hmutlu/Artify) based on our best performing model. 
 
 # Dataset
+
 The dataset comprises a collection of paintings by notable artists across different art movements. Each image is labeled with the painter's name, forming the basis for the supervised learning model. We downloaded the data from: https://www.kaggle.com/datasets/antoinegruson/-wikiart-all-images-120k-link
 
 # Preprocessing Steps:
@@ -21,30 +22,20 @@ The dataset comprises a collection of paintings by notable artists across differ
 
 - Splitting the dataset into training, validation, and test subsets
 
-- On the training set: Normalization, augmentation (e.g., random crops, flips, and rotations), resize
+- On the training set: normalization, augmentation (e.g., random crops, flips, and rotations), resize
 
-- On the test and validation sets: Normalization and resize
+- On the test and validation sets: normalization and resize
 
-# Painters
-The model predicts the painter from the following list of renowned artists:
+# Dependencies
 
-Claude Monet
-
-Pierre-Auguste Renoir
-
-Vincent van Gogh
-
-Paul Cézanne
-
-Pablo Picasso
-
-Georges Braque
-
-Salvador Dalí
+```text
+Your text here
+```
 
 
 
 # Model Architecture
+
 The painter classification model leverages a deep learning framework to identify unique features of each painter's style.
 
 
