@@ -16,6 +16,10 @@ Normalizing pixel values for consistent model input
 
 Splitting the dataset into training, validation, and test subsets
 
+On the training set: Normalization, augmentation (e.g., random crops, flips, and rotations), resize
+
+On the test and validation sets: Normalization and resize
+
 # Painters
 The model predicts the painter from the following list of renowned artists:
 
@@ -41,7 +45,7 @@ The painter classification model leverages a deep learning framework to identify
 
 ## 3Key features:
 
-Pretrained Backbone: ResNet
+Pretrained Backbone: ResNet18, Densenet121
 
 Transfer Learning: Fine-tuned for painter-specific classification
 
