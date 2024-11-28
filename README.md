@@ -32,33 +32,24 @@ The dataset comprises a collection of paintings by notable artists across differ
 torch, torchvision, streamlit, pillow, tqdm, scikit-learn, pandas, numpy, matplotlib 
 ```
 
+# How to navigate this repository
 
 
-# Model Architecture
+# Fine-tuned Models and Results
 
-The painter classification model leverages a deep learning framework to identify unique features of each painter's style.
+- ResNet18
+  
+  The model achieves the following performance metrics on the test set:
+   
+- DenseNet121
+  
+  The model achieves the following performance metrics on the test set:
 
+# Application
 
-## 3Key features:
+[Artify_App](https://huggingface.co/spaces/hmutlu/Artify)
+ 
 
-Pretrained Backbone: ResNet18, Densenet121
-
-Transfer Learning: Fine-tuned for painter-specific classification
-
-Evaluation Metrics: Includes accuracy, precision, recall, and F1-score
-
-# Results
-The model achieves the following performance metrics on the test set:
-
-Accuracy: XX%
-
-Precision: XX%
-
-Recall: XX%
-
-F1-Score: XX%
-
-Prediction examples and performance visualizations can be found in the results/ folder.
 
 
 
