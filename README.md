@@ -32,9 +32,6 @@ The dataset comprises a collection of paintings by notable artists across differ
 torch, torchvision, streamlit, pillow, tqdm, scikit-learn, pandas, numpy, matplotlib 
 ```
 
-# How to navigate this repository
-
-
 # Fine-tuned Models and Results
 
 - ResNet18
