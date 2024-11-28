@@ -46,7 +46,8 @@ torch, torchvision, streamlit, pillow, tqdm, scikit-learn, pandas, numpy, matplo
 
 [Artify_App](https://huggingface.co/spaces/hmutlu/Artify)
  
-[app.pdf](https://github.com/user-attachments/files/17951104/app.pdf)
+<img width="579" alt="application_screenshot" src="https://github.com/user-attachments/assets/be71c59b-466b-4d62-8452-67ad249db6cf">
+
 
 
 
