@@ -35,18 +35,25 @@ torch, torchvision, streamlit, pillow, tqdm, scikit-learn, pandas, numpy, matplo
 # Fine-tuned Models and Results
 
 - ResNet18
+  1. The training and validation loss and accuracies per epoch are as follows:
+  ![resnet18_training](https://github.com/user-attachments/assets/1b31e6d2-c14c-4466-aa11-326cce19ce06)
+
   
-  The model achieves the following performance metrics on the test set:
+  2. The model achieves the following performance metrics on the test set:
   ![R_evaluation_report](https://github.com/user-attachments/assets/f132f972-4409-4cda-9e77-3b621bceff39)
 
-
-
-  
+  3. Confusion matrix: 
+  ![resnet18_optuna_confusion_matrix](https://github.com/user-attachments/assets/d6fe682a-6296-4ed9-af5b-f7f8471f234a)  
    
 - DenseNet121
+  1. The training and validation loss and accuracies per epoch are as follows:
+  ![densenet121_training](https://github.com/user-attachments/assets/ff0397ba-20ec-44aa-b828-2e739190cb7e)
   
-  The model achieves the following performance metrics on the test set:
+  2. The model achieves the following performance metrics on the test set:
   ![D_evaluation_report](https://github.com/user-attachments/assets/fa939f56-de9b-49d3-b50b-96068dfc2fb9)
+
+  3. Confusion matrix:
+  ![densenet121_confusion_matrix](https://github.com/user-attachments/assets/729a4637-a91b-423e-9fb6-8b31a2746b36)
 
 
 # Application
