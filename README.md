@@ -16,6 +16,8 @@ The dataset comprises a collection of paintings by notable artists across differ
 
 # Preprocessing Steps:
 
+- Duplicated paintings were erased from the dataset
+
 - Standardizing image dimensions through resizing
 
 - Normalizing pixel values for consistent model input
