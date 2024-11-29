@@ -44,7 +44,8 @@ torch, torchvision, streamlit, pillow, tqdm, scikit-learn, pandas, numpy, matplo
 - DenseNet121
   
   The model achieves the following performance metrics on the test set:
-  ![densenet121_optuna](https://github.com/user-attachments/assets/e3169d3d-b928-4356-8d32-68e9640cfb9e)
+  ![densenet121_optuna_](https://github.com/user-attachments/assets/823b96e7-5693-47dc-9066-356eeb531007)
+
 
 
 # Application
