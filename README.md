@@ -37,7 +37,8 @@ torch, torchvision, streamlit, pillow, tqdm, scikit-learn, pandas, numpy, matplo
 - ResNet18
   
   The model achieves the following performance metrics on the test set:
-  ![resnet18_optuna_](https://github.com/user-attachments/assets/84ee05b3-41c9-431b-a2df-54b7b808ec6a)
+  ![R_evaluation_report](https://github.com/user-attachments/assets/f132f972-4409-4cda-9e77-3b621bceff39)
+
 
 
   
@@ -45,8 +46,7 @@ torch, torchvision, streamlit, pillow, tqdm, scikit-learn, pandas, numpy, matplo
 - DenseNet121
   
   The model achieves the following performance metrics on the test set:
-  ![densenet121_optuna_](https://github.com/user-attachments/assets/823b96e7-5693-47dc-9066-356eeb531007)
-
+  ![D_evaluation_report](https://github.com/user-attachments/assets/fa939f56-de9b-49d3-b50b-96068dfc2fb9)
 
 
 # Application
