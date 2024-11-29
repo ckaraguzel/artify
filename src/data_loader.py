@@ -9,12 +9,23 @@ from config import Config
 class PaintingDataLoader:
     def __init__(self, config):
         self.config = config
-        self.transform = transforms.Compose([
+        # Data Loader
+
+        self.train_transform = transforms.Compose([
+            transforms.RandomResizedCrop((224,224)), 
+            transforms.RandomHorizontalFlip(),
+            transforms.RandomRotation(degrees=10),
             transforms.ToTensor(),
-        ])
-        
+            transforms.Normalize([0.485, 0.456, 0.406],[0.229, 0.224, 0.225])
+            ])
+
+        self.validation_transform = transforms.Compose([
+            transforms.Resize((224,224)),
+            transforms.ToTensor(),
+            transforms.Normalize([0.485, 0.456, 0.406],[0.229, 0.224, 0.225])
+            ])
         # Load the dataset with ImageFolder
-        self.full_dataset = datasets.ImageFolder(self.config.DATA_DIR, transform=self.transform)
+        self.full_dataset = datasets.ImageFolder(self.config.DATA_DIR)
         self.targets = np.array(self.full_dataset.targets)  # Class labels for stratification
 
         # Perform stratified splits for train, validation, and test sets
@@ -22,8 +33,16 @@ class PaintingDataLoader:
         
         # Create Subsets for each split
         self.train_dataset = Subset(self.full_dataset, self.train_indices)
+        self.train_dataset.dataset.transform = self.train_transform  # Apply augmentation only to training set
+
+
         self.val_dataset = Subset(self.full_dataset, self.val_indices)
+        self.val_dataset.dataset.transform = self.validation_transform  # No augmentation for validation set
+
+
         self.test_dataset = Subset(self.full_dataset, self.test_indices)
+        self.test_dataset.dataset.transform = self.validation_transform  # No augmentation for test set
+
 
     def _stratified_split(self):
         """Perform a stratified split to obtain train, validation, and test indices."""

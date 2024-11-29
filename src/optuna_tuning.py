@@ -1,15 +1,14 @@
-# train.py
+import optuna
 import torch
 import torch.nn as nn
 import torch.optim as optim
+from model import get_model  # Assuming this function gets the model architecture
+from data_loader import PaintingDataLoader  # Assuming this loads your dataset
 from config import Config
-from data_loader import PaintingDataLoader
-from model import get_model
-from tqdm import tqdm
 import os
-import csv
-import matplotlib.pyplot as plt
 from save_results import SaveResults
+from tqdm import tqdm
+
 
 def calculate_class_weights(data_loader):
     label_counts = torch.zeros(Config.NUM_CLASSES)
@@ -20,13 +19,25 @@ def calculate_class_weights(data_loader):
     return weights
 
 
-def train(config):
-    save_results = SaveResults("C://Users//Hatice//Documents//GitHub//artify//results", config.MODEL_NAME)
-
-    # Initialize the PaintingDataLoader and get dataloaders
+# Define the objective function for Optuna
+def objective(trial):
+    # Define hyperparameters to tune
+    batch_size = trial.suggest_categorical('batch_size', [16, 32, 64])  # Tune batch size
+    epochs = trial.suggest_int('epochs', 3, 10)  # Tune number of epochs (3 to 10)
+    learning_rate = trial.suggest_loguniform('learning_rate', 1e-5, 1e-3)  # Tune learning rate
+    weight_decay = trial.suggest_loguniform('weight_decay', 1e-5, 1e-3)  # Tune weight decay for regularization
+    
+    # Update config with current trial's hyperparameters
+    config = Config()
+    config.batch_size = batch_size
+    config.epochs = epochs
+    config.learning_rate = learning_rate
+    config.weight_decay = weight_decay
+    
+    # Load data with the current batch size
     data_loader = PaintingDataLoader(config)
     train_loader, val_loader, _ = data_loader.get_dataloaders()
-    
+
     # Initialize model, criterion, and optimizer
     model = get_model(config)
     class_weights = calculate_class_weights(train_loader).to(config.DEVICE)
@@ -37,7 +48,8 @@ def train(config):
     train_losses, val_losses = [], []
     train_accuracies, val_accuracies = [], []
     
-    for epoch in range(config.NUM_EPOCHS):
+    # Train the model for the given number of epochs
+    for epoch in range(config.epochs):
         model.train()
         epoch_loss, correct, total = 0, 0, 0
         for images, labels in tqdm(train_loader, desc=f'Epoch {epoch+1}/{config.NUM_EPOCHS}'):
@@ -57,9 +69,9 @@ def train(config):
         train_accuracy = 100 * correct / total
         train_losses.append(epoch_loss / len(train_loader))
         train_accuracies.append(train_accuracy)
-        print(f"Epoch [{epoch+1}/{config.NUM_EPOCHS}], Train Loss: {epoch_loss/len(train_loader):.4f}, Train Accuracy: {train_accuracy:.2f}%")
-
-        # Validation phase
+        print(f"Epoch [{epoch+1}/{config.epochs}], Train Loss: {epoch_loss/len(train_loader):.4f}, Train Accuracy: {train_accuracy:.2f}%")
+    
+    # Validation phase
         model.eval()
         val_loss, val_correct, val_total = 0, 0, 0
         with torch.no_grad():
@@ -74,23 +86,20 @@ def train(config):
         val_accuracy = 100 * val_correct / val_total
         val_losses.append(val_loss / len(val_loader))
         val_accuracies.append(val_accuracy)
-        print(f"Epoch [{epoch+1}/{config.NUM_EPOCHS}], Val Loss: {val_loss/len(val_loader):.4f}, Val Accuracy: {val_accuracy:.2f}%")
-        # Save the results for this epoch to CSV
-        save_results.save_results_to_csv(
-            f"training_results_{config.MODEL_NAME}.csv",
-            ["Phase", "Epoch", "Train Loss", "Train Accuracy", "Val Loss", "Val Accuracy", "Model Name"],
-            ["Training", epoch + 1, epoch_loss / len(train_loader), train_accuracy, val_loss / len(val_loader), val_accuracy, config.MODEL_NAME]
-        )
+        print(f"Epoch [{epoch+1}/{config.epochs}], Val Loss: {val_loss/len(val_loader):.4f}, Val Accuracy: {val_accuracy:.2f}%")
 
-    # Save the model
-    torch.save(model.state_dict(), config.MODEL_SAVE_PATH)
-    print(f"Model saved to {config.MODEL_SAVE_PATH}")
+        # Saving the best model checkpoint based on validation accuracy
+        model_dir = f'C://Users//Hatice//Documents//GitHub//artify//saved_models//optuna_model_check_points//model_checkpoints_{config.MODEL_NAME}'  # Directory where the models will be saved
+        os.makedirs(model_dir, exist_ok=True)  # Create the directory if it doesn't exist
+        model_path = os.path.join(model_dir, f"best_model_{trial.number}.pth")  # Model file path with trial number
+        torch.save(model.state_dict(), model_path)  # Save the model's state_dict
 
-    # Save the final graph after all epochs
-    save_results.plot_and_save_graphs(
-        "training_progress.png", train_losses, val_losses, train_accuracies, val_accuracies
-    )
+    return val_accuracy  # Optuna will maximize this metric
 
-if __name__ == '__main__':
-    config = Config()
-    train(config)
+# Create an Optuna study
+study = optuna.create_study(direction='maximize')  # We want to maximize validation accuracy
+study.optimize(objective, n_trials=10)  # Number of trials (configurations) to test
+
+# Save the best configuration
+best_params = study.best_params
+print("Best hyperparameters found: ", best_params)
