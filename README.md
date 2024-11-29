@@ -58,7 +58,7 @@ torch, torchvision, streamlit, pillow, tqdm, scikit-learn, pandas, numpy, matplo
 
 # Application
 
-[Artify_App](https://huggingface.co/spaces/hmutlu/Artify)
+We also built an application published on HuggingFace using our finetuned resnet18 model and using streamlit. Here is the screenshot of the application and the link: [Artify_App](https://huggingface.co/spaces/hmutlu/Artify)
  
 <img width="579" alt="application_screenshot" src="https://github.com/user-attachments/assets/be71c59b-466b-4d62-8452-67ad249db6cf">
 
