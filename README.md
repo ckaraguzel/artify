@@ -1,6 +1,6 @@
 # 🎨 Artify: Finding the painter of a Masterpiece with CNNs 🖌️
 
-Welcome to Artify, where Convolutional Neural Networks (CNNs) bring the genius of art to life! 🧑‍🎨✨ Can AI tell the difference between Picasso's bold geometry and and Dalí's surreal dreamscapes? Spoiler alert: it absolutely can!
+Welcome to Artify, where Convolutional Neural Networks (CNNs) bring the genius of art to life! 🧑‍🎨✨ Can AI tell the difference between Picasso's bold geometry and Dalí's surreal dreamscapes? Spoiler alert: it absolutely can!
 
 This project trains a CNN to dive deep into the textures, colors, and brushwork of famous paintings, unraveling the secrets of each artist’s unique style. Forget genres—this is pure artistic detective work powered by cutting-edge machine learning.
 
