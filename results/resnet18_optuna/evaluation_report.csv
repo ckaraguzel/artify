@@ -1,0 +1,11 @@
+Class,precision,recall,f1-score,support
+claude_monet,0.81,0.86,0.83,617.0
+georges_braque,0.57,0.42,0.49,113.0
+pablo_picasso,0.63,0.64,0.63,404.0
+paul_cezanne,0.73,0.83,0.78,268.0
+pierre_auguste_renoir,0.88,0.9,0.89,822.0
+salvador_dali,0.59,0.56,0.57,275.0
+vincent_van_gogh,0.88,0.82,0.85,972.0
+accuracy,0.79,0.79,0.79,0.79
+macro avg,0.73,0.72,0.72,3471.0
+weighted avg,0.79,0.79,0.79,3471.0
